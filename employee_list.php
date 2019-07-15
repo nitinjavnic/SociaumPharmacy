@@ -16,6 +16,16 @@ include('config.php');
 
             <div class="row">
 
+                <?php if(!empty($_GET['message'])) { ?>
+                    <?php  $message = $_GET['message']; ?>
+
+                    <div class="alert alert-success">
+                        <strong>Success!</strong><?php echo $message; ?>.
+                    </div>
+
+                <?php } ?>
+
+
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -42,20 +52,19 @@ include('config.php');
                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Serial No</th>
+                                    <th>SNo.</th>
                                     <th>User Role</th>
                                     <th>Department</th>
                                     <th>Date of birth</th>
                                     <th>Id Proof </th>
-                                    <th>Picture</th>
+
                                     <th>First Name</th>
                                     <th>last Name</th>
                                     <th>Email</th>
                                     <th>Password</th>
                                     <th>Mobile No</th>
                                     <th>Address</th>
-                                    <th>Join date</th>
-                                    <th>Update</th>
+                                    <th>Created on</th>
                                 </tr>
                                 </thead>
 
@@ -96,7 +105,6 @@ include('config.php');
                                         <td><?php echo $row['dob']; ?></td>
                                         <td><?php echo $row['id_proof']; ?></td>
 
-                                        <td><img src="uploads/employee/<?php echo $row['photo']; ?>" class="img-circle" alt="User Image" height="50" width="50"></td>
                                         <td><?php echo $row['first_name']; ?></td>
                                         <td><?php echo $row['last_name']; ?></td>
                                         <td><?php echo $row['email']; ?></td>
@@ -104,18 +112,14 @@ include('config.php');
                                         <td><?php echo $row['phone']; ?></td>
                                         <td><?php echo $row['address']; ?></td>
                                         <td><?php echo $row['created_on']; ?></td>
-                                        <td>
-                                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#ordine"><i class="fa fa-pencil"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#ordine"><i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </td>
+
                                     </tr>
                                     <?php
                                 }
                                 ?>
 
                                 </tbody>
+
                             </table>
                         </div>
                     </div>
@@ -129,7 +133,7 @@ include('config.php');
     </div>
     <!-- /page content -->
 
-
+    <script> $(window).resize(function () { if ($.fn.dataTable) { $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust(); } }); </script>
     <!-- footer content -->
 <?php
 include('footer.php');

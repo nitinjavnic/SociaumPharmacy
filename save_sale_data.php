@@ -13,10 +13,15 @@ if(isset($_POST['submit'])){
 
          $query = mysqli_query($conn, $sql1);
          if($query){
-             echo "<script>alert('Sale Data Added successfully!')</script>";
+             $location='list_sale_data.php';
+             header("Location: $location?message=Sale data Added successfully!");
+
 
          }else{
-             echo "<script>alert('Error found!')</script>";
+             $location='add_sale.php';
+             header("Location: $location?message=Something Went wrong!");
+
+
 
          }
 

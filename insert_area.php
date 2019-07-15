@@ -18,9 +18,9 @@ if(isset($_POST['submit'])){
     }
     $query = mysqli_query($conn,$q);
     if($query){
-        $location='add_area.php';
+        $location='area_list.php';
         header("Location: $location?message=Area Added successfully!");
-      // header('Location: add_area.php');
+
 
     }
 

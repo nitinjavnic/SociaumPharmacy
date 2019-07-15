@@ -44,18 +44,22 @@ if(isset($_POST['submit'])){
                          }
                         $sql2 = "INSERT INTO `area_list` (`user_id`, `area_name`,`area_id`) VALUES ('$user_id','$area_name','$area_id')";
                         $query = mysqli_query($conn,$sql2);
-                        if($query){
-                            echo "<script>alert('Record added successfully!')</script>";
 
-                        }
 
                     }
 
                 }
             }
 
+            $location='employee_list.php';
+            header("Location: $location?message=Employee Added successfully!");
+
+
         }else{
-            echo "<script>alert('not added successfully!')</script>";
+            $location='add-emp.php';
+            header("Location: $location?message=Please Select Five Area!");
+
+
 
         }
 
@@ -64,7 +68,11 @@ if(isset($_POST['submit'])){
     else
     {
 
-        echo "<script>alert('Email already exist!')</script>";
+        $location='add-emp.php';
+        header("Location: $location?message=Employee Already Exists!");
+
+
+
     }
 
 }

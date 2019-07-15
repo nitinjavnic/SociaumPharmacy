@@ -88,12 +88,7 @@
                             <li><a href="add_hierarchy.php">Add Hierarchy</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-clone"></i>Sale Data <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="fixed_sidebar.php">Add Sale Data</a></li>
-                            <li><a href="fixed_footer.php">List Sale Data</a></li>
-                        </ul>
-                    </li>
+
                     <li><a><i class="fa fa-clone"></i>Expenses<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="fixed_footer.php">List Expenses</a></li>
@@ -121,7 +116,7 @@
                     <li><a><i class="fa fa-clone"></i>SaleData<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="add_sale.php">Add SaleData</a></li>
-                            <li><a href="list_tour.php">List SaleData</a></li>
+                            <li><a href="list_sale_data.php">List SaleData</a></li>
                         </ul>
                     </li>
 

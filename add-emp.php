@@ -8,6 +8,15 @@ include('config.php');
             <div class="clearfix"></div>
 
             <div class="row">
+                <?php if(!empty($_GET['message'])) { ?>
+                    <?php  $message = $_GET['message']; ?>
+
+                    <div class="alert alert-success">
+                        <strong>Success!</strong><?php echo $message; ?>.
+                    </div>
+
+                <?php } ?>
+
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">

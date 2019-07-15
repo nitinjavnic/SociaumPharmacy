@@ -17,7 +17,9 @@ if(isset($_POST['submit'])){
         $sql1  = "INSERT INTO `doctor` (`first_name`, `address`, `qualification`, `speciality`, `phone`, `dob`)
          VALUES ('$fname', '$address', '$qualification', '$specialist', '$phone', '$date_of_birth')";
         $query = mysqli_query($conn, $sql1);
-        echo "<script>alert('Record added successfully!')</script>";
+        $location='list_doctor.php';
+        header("Location: $location?message=Area Added successfully!");
+
     }
 
     else

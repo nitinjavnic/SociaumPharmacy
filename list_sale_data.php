@@ -48,12 +48,12 @@ include('config.php');
                                 <thead>
                                 <tr>
                                     <th>SNo</th>
-                                    <th>First Name</th>
-                                    <th>Address</th>
-                                    <th>Qualification</th>
-                                    <th>Specility</th>
-                                    <th>Mobile No</th>
-                                    <th>Dob </th>
+                                    <th>Product Name</th>
+                                    <th>Area Name</th>
+                                    <th>Product Price</th>
+                                    <th>Product Qty</th>
+                                    <th>Total Price</th>
+                                    <th>Created At </th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -62,7 +62,10 @@ include('config.php');
                                 <tbody>
                                 <?php
                                 $i=1;
-                                $sql= "select * from doctor";
+                                $sql= "SELECT * FROM product INNER JOIN  sale_data
+ON product.id = sale_data.product_id
+INNER JOIN  add_area
+ON sale_data.area_id = add_area.area_id";
                                 $query =mysqli_query($conn,$sql);
                                 while($row = mysqli_fetch_array($query))
                                 {
@@ -74,18 +77,18 @@ include('config.php');
                                             <label><?php echo $i++; ?></label>
                                         </td>
 
-                                        <td><?php echo $row['first_name']; ?></td>
-                                        <td><?php echo $row['address']; ?></td>
-                                        <td><?php echo $row['qualification']; ?></td>
-                                        <td><?php echo $row['speciality']; ?></td>
-                                        <td><?php echo $row['phone']; ?></td>
-                                        <td><?php echo $row['dob']; ?></td>
+                                        <td><?php echo $row['product_name']; ?></td>
+                                        <td><?php echo $row['area']; ?></td>
+                                        <td><?php echo $row['product_price']; ?></td>
+                                        <td><?php echo $row['product_qty']; ?></td>
+                                        <td><?php echo $row['total_price']; ?></td>
+                                        <td><?php echo $row['created_at']; ?></td>
 
 
                                         <td>
 
                                             <a href="edit_doctor.php?doctor_id=<?php echo $row['id']; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
-                                            <a id="<?php echo $row['id'] ?>" class="btn btn-danger btn-xs doctor_delte"><i class="fa fa-trash-o"></i></a>
+                                            <a id="<?php echo $row['id'] ?>" class="btn btn-danger btn-xs delete_sale"><i class="fa fa-trash-o"></i></a>
 
 
                                         </td>
@@ -106,7 +109,7 @@ include('config.php');
         </div>
     </div>
     <script>
-        $('.doctor_delte').click(function(){
+        $('.delete_sale').click(function(){
             var id = $(this).attr('id');
 
             swal({
@@ -119,10 +122,10 @@ include('config.php');
                 confirmButtonText: 'Yes, delete it!'
             }).then(function() {
                 $.ajax({
-                    url: 'delete_doctor.php',
+                    url: 'delete_sale.php',
                     type: 'POST',
                     data: {
-                        doctor_id: id,
+                        id: id,
                     },
 
                     success: function(response){
